@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My profile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(rgba(0, 0, 0, 0.71), rgba(0, 0, 0, 0.71)), url('https://files.catbox.moe/d5sx53.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      overflow-y: auto;
+      min-height: 100vh;
+    }
+
+    .glitch-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      mix-blend-mode: overlay;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.05),
+        rgba(255, 255, 255, 0.05) 1px,
+        transparent 1px,
+        transparent 2px
+      );
+      animation: glitch-overlay 1s infinite linear;
+      z-index: 1;
+      display: none;
+    }
+
+    @keyframes glitch-overlay {
+      0% { background-position: 0 0; }
+      100% { background-position: 0 100%; }
+    }
+
+    .center-logo {
+      margin-top: 30px;
+      margin-bottom: 30px;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: url('https://files.catbox.moe/e6yiyi.jpeg') no-repeat center center / cover;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+      border: 2px solid #fff;
+      z-index: 2;
+    }
+
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 20px;
+      padding-top: 60px;
+      min-height: 100vh;
+      position: relative;
+      z-index: 2;
+    }
+
+    .glitch-button {
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border: none;
+      color: #fff;
+      background-color: #111;
+      border-radius: 8px;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      margin: 10px;
+      overflow: hidden;
+    }
+
+    .glitch-button:active {
+      transform: scale(0.96);
+      box-shadow: 0 0 10px #0ff;
+    }
+
+    .glitch-button::before,
+    .glitch-button::after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      width: calc(100% + 4px);
+      height: calc(100% + 4px);
+      border: 2px solid #fff;
+      opacity: 0.1;
+      animation: glitch-box 2s infinite;
+    }
+
+    .glitch-button::after {
+      border-color: #0ff;
+      animation-delay: 1s;
+    }
+
+    @keyframes glitch-box {
+      0% { transform: translate(0, 0); }
+      20% { transform: translate(-2px, -2px); }
+      40% { transform: translate(2px, 2px); }
+      60% { transform: translate(-2px, 2px); }
+      80% { transform: translate(2px, -2px); }
+      100% { transform: translate(0, 0); }
+    }
+
+    .description {
+      margin-top: 40px;
+      color: white;
+      font-size: 1.2rem;
+      text-align: center;
+      text-shadow: 0 0 5px #000;
+      max-width: 90%;
+    }
+
+    #start-button {
+      margin-top: 20px;
+      padding: 15px 40px;
+      font-size: 1.3rem;
+      background-color: #0ff;
+      color: #111;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 15px #0ff;
+      transition: transform 0.2s ease;
+    }
+
+    #start-button:active {
+      transform: scale(0.95);
+      box-shadow: 0 0 10px #0ff;
+    }
+  </style>
+</head>
+<body>
+  <div class="glitch-overlay" id="glitch-overlay"></div>
+
+  <div class="main-content">
+    <div class="center-logo"></div>
+
+    <!-- START Button -->
+    <button id="start-button" onclick="startExperience()">🚀 Start</button>
+
+    <!-- Buttons -->
+    <button class="glitch-button" onclick="window.open('https://www.tiktok.com/@everydayshiina', '_blank')">TikTok</button>
+    <button class="glitch-button" onclick="window.open('https://www.instagram.com/jiixyrine', '_blank')">Instagram</button>
+
+    <!-- Description -->
+    <div class="description">
+      <p>(👋) Hola bro.... Terimakasih sudah mampir ke website saya <br>
+        \"Jika cinta itu buta, lantas mengapa kau sebut orang yang cinta dengan karakter fiksi itu Aneh?\" <br>
+        >Jiitzy
+      </p>
+    </div>
+
+    <!-- Audio -->
+    <audio id="bg-audio" src="https://files.catbox.moe/rprg8w.mp3"></audio>
+  </div>
+
+  <script>
+    function startExperience() {
+      const audio = document.getElementById('bg-audio');
+      const overlay = document.getElementById('glitch-overlay');
+      const startBtn = document.getElementById('start-button');
+
+      // Aktifkan glitch & audio
+      overlay.style.display = 'block';
+      audio.play();
+
+      // Hilangkan tombol start
+      startBtn.style.display = 'none';
+    }
+  </script>
+</body>
+  </html>
